@@ -17,7 +17,8 @@ Before deploying or executing the source code, ensure your local computing envir
 ### 1. Clone or Extract the Source Code Directory
 Extract your downloaded project ZIP archive file, open your system terminal command prompt (`cmd` or terminal application), and navigate directly into the root folder:
 ```bash
-cd "C:\Users\SAMSON\property-valuation-dashboard"
+cd property-valuation-dashboard
+
 ```
 
 ### 2. Configure a Clean Virtual Environment (Optional but Recommended)
