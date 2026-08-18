@@ -1,66 +1,85 @@
-# 🏠 Real Estate Automated Valuation Model (AVM) Dashboard
+# 🏠 Real Estate Automated Valuation Model (AVM) Engine
 
-A web-based Machine Learning application built using **Streamlit** to predict property market sales values in AUD. This interactive dashboard bridges the gap between statistical modeling and business application, allowing end-users to input structural property features and receive instantaneous valuation estimations.
-
-🔗 **[[(https://streamlit.io](https://property-valuation-dashboard-2m3gafcdfzh9xaxwlsnnzt.streamlit.app/)]** 
+A web-based Machine Learning application built using **Streamlit** to predict residential property sales values in AUD. This interactive dashboard bridges the gap between statistical modeling and business application, allowing end-users to input structural property features and receive instantaneous valuation estimations.
 
 ---
 
-## 🎯 Project Overview & Objective
-The goal of this project was to transition a raw real estate analytics workflow from an exploratory sandbox into a secure, production-grade cloud dashboard. The model evaluates property parameters across key Australian suburbs to calculate custom localized pricing variations.
-
-### Core App Parameters:
-*   **Suburb Locations:** Sydney, Marrickville, Blacktown
-*   **Property Natures:** Apartment, House
-*   **Continuous Features:** Size in square meters ($m^2$), Bedrooms, Bathrooms, Car Spaces
+## 📋 System Requirements & Prerequisite Tools
+Before deploying or executing the source code, ensure your local computing environment possesses the following minimum dependencies:
+*   **Operating System:** Windows 10/11, macOS, or Linux
+*   **Base Language Runtime:** Python 3.11 or Python 3.12 (Highly Recommended)
+*   *Note: Avoid running inside unverified Python 3.14 environments due to upstream library build package compatibility restrictions.*
 
 ---
 
-## 🛠️ Data Science Pipeline & Feature Engineering
-Before generating predictions, the underlying system translates human-readable metrics into a structured sparse matrix using advanced feature engineering pipelines tested within the parent Jupyter Notebook (`.ipynb`).
+## 🛠️ Step-by-Step Installation & Build Guide
 
-### 1. Categorical Dummy Encoding
-To feed non-numeric text variables into our machine learning algorithms, categorical metrics are systematically transformed. The system handles alphabetical lists and drops the baseline category reference string (`Blacktown`) to fully mitigate spatial multicollinearity risks:
-$$\text{Suburb} \rightarrow [\text{Suburb\_Marrickville}, \text{Suburb\_Sydney}]$$
+### 1. Clone or Extract the Source Code Directory
+Extract your downloaded project ZIP archive file, open your system terminal command prompt (`cmd` or terminal application), and navigate directly into the root folder:
+```bash
+cd "C:\Users\SAMSON\property-valuation-dashboard"
+```
 
-### 2. Custom Location Interaction Terms
-Real estate pricing changes dramatically based on location tier structures. To allow factors like *price per square meter* to shift dynamically based on geographic code matrices, custom cross-product interaction terms were explicitly mapped into the feature vector space:
-*   `Size_x_Suburb_Sydney` = `Size in sq meter` $\times$ `Suburb_Sydney`
-*   `Bed_x_Suburb_Sydney` = `Bed room` $\times$ `Suburb_Sydney`
+### 2. Configure a Clean Virtual Environment (Optional but Recommended)
+To prevent package version conflicts across your global operating system directories, initialize an isolated application sandbox layer:
+```bash
+python -m venv venv
+```
+Activate the environment tracking terminal:
+*   **Windows (Command Prompt):** `venv\Scripts\activate.bat`
+*   **macOS / Linux:** `source venv/bin/activate`
 
----
-
-## 🚀 Cloud Architecture & Deployment Workarounds
-The application is containerized and hosted natively using **Streamlit Community Cloud** tied directly to version-controlled updates on GitHub. 
-
-### Overcoming Platform Version Constraints
-During deployment, standard serialization libraries (`joblib`/`scikit-learn`) encountered environment version conflicts due to a cloud platform edge condition running experimental Python versions. 
-
-To overcome this, a production-grade **algorithmic engine reconstruction fallback script** was developed. By mathematical extraction of the trained tree boundaries and core coefficient scales directly into a localized pure-Python prediction matrix, the application achieved:
-1.  **Zero External Dependencies:** Removed version-locked module vulnerabilities (`ModuleNotFoundError`).
-2.  **Blazing Fast Execution Speed:** Completely eliminated disk reading I/O times required to deserialize binary `.pkl` files.
-3.  **High Stability:** Bulletproof processing against system updates or cross-platform package corruption.
+### 3. Install Required Library Dependencies
+Execute the pip installer framework to automatically resolve and download all core data science and web rendering packages defined inside the workspace registry:
+```bash
+python -m pip install -r requirements.txt
+```
 
 ---
 
-## 💻 Local Workspace Execution Setup
-To review the interface execution logic locally on your computer terminal workspace, run the following steps:
+## 🚀 Execution & Run Protocols
 
-1. Clone the project repository:
-   ```bash
-   git clone https://github.com
-   cd property-valuation-dashboard
-   ```
+To launch the graphical dashboard application interface server locally on your laptop workspace machine, run the following execution command:
 
-2. Run the application using Python's active module execution flags:
-   ```bash
-   python -m streamlit run streamlit_app.py
-   ```
+```bash
+python -m streamlit run streamlit_app.py
+```
+
+### Accessing the Interface Dashboard
+Once the local compilation sequences finalize successfully, the system console will broadcast the server connection configurations. Open your web browser and navigate directly to the local port address:
+👉 **http://localhost:8501** (or **http://localhost:8502**)
 
 ---
 
-## 📊 Technologies Used
-*   **Core Logic:** Python 3.11+, NumPy, Pandas
-*   **Statistical Modeling Source:** Scikit-Learn, Joblib, Jupyter Notebooks
-*   **Web Framework & UI Container:** Streamlit Cloud Architecture
-*   **Version Control:** Git & GitHub Respositories
+## 📊 Reproducing Statistical & Algorithmic Results
+
+To replicate the original data engineering transformations and verify model consistency metrics, execute the pipeline inputs matching these controlled baseline profiles:
+
+### 🔬 Controlled Test Profiles Matrix:
+
+| Parameter Attribute | Baseline Evaluation Profile A | Baseline Evaluation Profile B |
+| :--- | :--- | :--- |
+| **Suburb Location** | `Sydney` | `Marrickville` |
+| **Property Nature** | `Apartment` | `House` |
+| **Size in Square Meters (\(m^2\))** | `120` | `150` |
+| **Number of Bedrooms** | `3` | `4` |
+| **Number of Bathrooms** | `2` | `2` |
+| **Number of Car Spaces** | `1` | `2` |
+| **Expected System Output** | **\$1,592,000.00 AUD** | **\$1,300,500.00 AUD** |
+
+### Verification Methodology:
+1. Open the running Streamlit web application tab in your browser.
+2. Manually map the drop-down boxes and input numeric fields to match **Profile A** above.
+3. Click **🔮 Calculate Estimated Market Price**.
+4. Confirm that the green valuation success card outputs exactly **\$1,592,000.00 AUD**. This verifies that your local server's internal categorical encoding vectors and structural interaction multipliers match the cloud deployment baseline.
+
+---
+
+## 📁 Repository Directory Structure Configuration
+```text
+property-valuation-dashboard/
+├── streamlit_app.py      # Main graphical Streamlit application engine script
+├── requirements.txt      # Platform dependency version mapping definitions file
+├── model.pkl             # Serialized machine learning estimator matrix artifact
+└── README.md             # Complete user installation and deployment manual
+```
